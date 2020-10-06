@@ -16,7 +16,7 @@
               <small class="u-color-secondary">pdf, txt, doc, docx, odt, xls, xlsx, ppt, pptx, jpg, png, gif, html</small>
             </div>
             <p>
-            <a id="start" class="c-button c-button--primary" @click.prevent="annotate">Iniciar proceso</a>
+            <a id="start" class="c-button c-button--primary" @click.prevent="annotate">Escanear</a>
             <a class="c-button" :class="{ disabled: inProgress }" v-if="hasInput" @click="cleanTextAndResult">Limpiar</a>
             </p>
           </div>
