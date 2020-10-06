@@ -16,7 +16,7 @@
               <small class="u-color-secondary">pdf, txt, doc, docx, odt, xls, xlsx, ppt, pptx, jpg, png, gif, html</small>
             </div>
             <p>
-            <a id="start" class="c-button c-button--primary" @click.prevent="annotate">Iniciar proceso</a>
+            <a id="start" class="c-button c-button--primary" @click.prevent="annotate">Escanear</a>
             <a class="c-button" :class="{ disabled: inProgress }" v-if="hasInput" @click="cleanTextAndResult">Limpiar</a>
             </p>
           </div>
@@ -24,33 +24,31 @@
 
         <div id="result" class="o-section o-grid">
           <div v-if="inProgress || errors" class="o-grid__col u-12">
-            <tipi-message v-if="errors" type="error" icon>Has sobrepasado el límite de escaneos por hora. Vuelve a intentarlo pasado un tiempo</tipi-message>
+            <tipi-message v-if="errors" type="error" icon>{{errors}}</tipi-message>
             <tipi-loader v-if="inProgress" title="Escaneando resultados" :subtitle="subtitle" />
           </div>
           <div class="o-grid__col u-12 result" v-if="result">
-            <h4>Resultado del escáner:</h4>
+
             <tipi-message v-if="!result.topics.length" type="error" icon>No hemos encontrado ninguna coincidencia entre tu texto y nuestras etiquetas.</tipi-message>
-            <div class="o-grid" v-else>
-              <div class="o-grid__col u-12 u-7@sm">
-                <tipi-message type="info" icon>Si haces clic en cualquiera de las etiquetas relacionadas con tu texto podrás conocer además toda la actividad parlamentaria asociada con dicha etiqueta.</tipi-message >
-                <tipi-topics meta="ODS tratados" :topics="result.topics" :tags="result.tags" :topicsStyles="styles.topics"/>
-              </div>
-              <div class="o-grid__col u-12 u-offset-2@sm u-3@sm">
-                <tipi-message type="info" icon>Aquí tienes una relación visual de tu texto, para que de un vistazo puedas ver las conexiones temáticas existentes</tipi-message>
-                <InitiativeChart :initiative="fakeInitiative" :topics="allTopics" :styles="styles"></InitiativeChart>
-                <span class="u-text-tbody2">Relación de este texto con los ODS <sup title="El gráfico muestra los ODS relacionados con el texto y el grado de relación con cada uno de ellos, cuya intensidad se muestra en cuánto de coloreado está cada ODS en la gráfica.">?</sup></span>
-              </div>
-              <div class="o-grid__col u-12 u-text-center u-margin-top-4 u-padding-top-4 u-border-top">
-                <tipi-csv-download
-                  :initiatives="csvItems || []"
-                  :csvItems="csvItems"
-                  :csvFields="csvFields"
-                  :canDownloadCSV="true"
-                  button-class="c-button--primary"
-                  label="Descárgalo en CSV"
-                  />
+
+            <div v-else>
+
+              <scanner-visualizations :result="result"></scanner-visualizations>
+
+            </div>
+
+
+            <!-- Begin CTAs -->
+            <div class="o-grid o-grid--wide o-grid--center u-bg-primary-light u-padding-top-8 u-padding-bottom-8 u-margin-top-8" v-if="result.topics.length">
+              <div class="o-grid__col u-12 u-12@xs u-10@sm u-text-center">
+                <h5>Lorem fistrum amatomaa</h5>
+                <p>Sexuarl mamaar no te digo trigo por no llamarte Rodrigor la caidita por la gloria de mi madre ese pedazo de quietooor sexuarl a gramenawer. Amatomaa va usté muy cargadoo sexuarl de la pradera benemeritaar tiene musho peligro quietooor te voy a borrar el cerito jarl. Tiene musho peligro qué dise usteer ese pedazo de sexuarl al ataquerl quietooor al ataquerl. </p>
+                <a @click="saveResult" class="c-button c-button--primary">Guarda el resultado</a>
               </div>
             </div>
+            <!-- End CTAs -->
+
+
           </div>
         </div>
     </div>
@@ -58,42 +56,37 @@
 </template>
 
 <script>
-  import { TipiMessage, TipiHeader, TipiLoader, TipiTopics, TipiNeuron, TipiCsvDownload } from 'tipi-uikit'
-import config from '@/config';
+  import { TipiMessage, TipiHeader, TipiLoader } from 'tipi-uikit';
+import ScannerVisualizations from '@/components/scanner-visualizations.vue';
+import swal from 'sweetalert2';
 import api from '@/api';
-import { mapState } from 'vuex';
-import InitiativeChart from '@/components/initiative-chart.vue';
 
 const VueScrollTo = require('vue-scrollto');
 
 export default {
-  name: 'tagger',
+  name: 'scanner',
   components: {
     TipiHeader,
-    TipiTopics,
-    TipiNeuron,
-    TipiCsvDownload,
     TipiMessage,
-    InitiativeChart,
     TipiLoader,
+    ScannerVisualizations
   },
   data() {
     return {
-      config: config,
       inputText: '',
       inputFile: null,
       result: null,
       errors: null,
-      fakeInitiative: null,
       inProgress: false,
       estimatedTime: 0,
       csvItems: [],
       csvFields: ['topic', 'subtopic', 'tag', 'times'],
-      styles: config.STYLES,
+      excerptText: '',
+      scanned: {},
+      tagsInWordCloud: 25,
     };
   },
   computed: {
-    ...mapState(['allTopics']),
     subtitle () {
       return this.estimatedTime ? `Tardaremos unos ${this.estimatedTime} segundos en mostrarte resultados. No te vayas` : "Ten paciencia, estamos trabajando duro"
     },
@@ -110,7 +103,6 @@ export default {
     cleanResult() {
       this.result = null
       this.errors = null
-      this.fakeInitiative = null
     },
     cleanTextAndResult() {
       this.cleanText()
@@ -123,16 +115,11 @@ export default {
       this.cleanResult();
       this.inProgress = true;
       document.getElementById('start').text = 'Procesando...'
-      this.fakeInitiative = null
       api.annotate(this.inputText, this.inputFile)
         .then(response => {
           if (response.data.status==="SUCCESS") {
             this.result = response.data.result
-            this.csvItems = this.result.tags
-            this.fakeInitiative = {
-              'topics': this.result.topics,
-              'tags': this.result.tags
-            }
+            this.excerptText = response.data.excerpt
             this.inProgress = false;
             document.getElementById('start').text = 'Iniciar proceso'
             VueScrollTo.scrollTo('#result', 1500)
@@ -149,17 +136,66 @@ export default {
           else this.errors = error.response.data.message
           this.inProgress = false;
           document.getElementById('start').text = 'Iniciar proceso'
+
+        });
+    },
+    saveResult: function() {
+      swal({
+        title: 'Ponle un nombre',
+        input: 'text',
+        focusConfirm: true,
+        showCancelButton: true,
+        confirmButtonText: 'Guardar',
+        confirmButtonAriaLabel: 'Guardar',
+        cancelButtonText: 'Cancelar',
+        cancelButtonAriaLabel: 'Cancelar'
+      })
+        .then(title => {
+          if (!title.value) throw null;
+
+          api.saveScanned(title.value, this.excerptText, this.result)
+            .then(response => {
+
+              swal({
+                title: 'Guardado!',
+                text: 'Texto escaneado guardado satisfactoriamente',
+                focusConfirm: false,
+                confirmButtonText: 'Continuar',
+                confirmButtonAriaLabel: 'Continuar',
+                type: 'success'
+              }).then(function (){
+                this.scanned.title = response.data.title
+                this.scanned.excerpt = response.data.excerpt
+                this.$router.replace({
+                  name: 'scanned',
+                  params: {
+                    id: response.data.id
+                  }
+                });
+              }.bind(this, response.data));
+            })
+            .catch(
+              error => {
+                const limited = error.response.status === 429;
+                swal({
+                  title: limited ? 'Limite excedido por hora' : 'Error al guardar el texto escaneado',
+                  text: 'Inténtalo de nuevo más tarde',
+                  focusConfirm: false,
+                  type: 'error'
+                });
+              }
+            );
+
+        })
+        .catch(error => {
+          this.errors = error
         });
     },
     getAsyncResults: function(taskID) {
       api.getScannerResult(taskID).then(response => {
         if (response.data.status==="SUCCESS") {
           this.result = response.data.result
-          this.csvItems = this.result.tags
-          this.fakeInitiative = {
-            'topics': this.result.topics,
-            'tags': this.result.tags
-          }
+          this.excerptText = response.data.excerpt
           this.inProgress = false;
           document.getElementById('start').text = 'Iniciar proceso'
           VueScrollTo.scrollTo('#result', 1500)
@@ -175,5 +211,5 @@ export default {
       })
     }
   }
-}
+};
 </script>
