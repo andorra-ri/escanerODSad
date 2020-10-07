@@ -24,7 +24,7 @@
             <div class="o-grid__col u-12 u-12@xs u-10@sm u-text-center">
               <h5>Lorem fistrum amatomaa</h5>
               <p>Sexuarl mamaar no te digo trigo por no llamarte Rodrigor la caidita por la gloria de mi madre ese pedazo de quietooor sexuarl a gramenawer. Amatomaa va usté muy cargadoo sexuarl de la pradera benemeritaar tiene musho peligro quietooor te voy a borrar el cerito jarl. Tiene musho peligro qué dise usteer ese pedazo de sexuarl al ataquerl quietooor al ataquerl. </p>
-              <router-link :to="{name:'scanner'}" class="c-button c-button--primary">Escanear ahora</router-link>
+              <router-link :to="{name:'scanner'}" class="c-button c-button--primary">Escanear otro documento</router-link>
             </div>
           </div>
           <!-- End CTAs -->

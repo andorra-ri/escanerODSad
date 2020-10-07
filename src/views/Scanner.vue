@@ -122,7 +122,7 @@ export default {
             this.result = response.data.result
             this.excerptText = response.data.excerpt
             this.inProgress = false;
-            document.getElementById('start').text = 'Iniciar proceso'
+            document.getElementById('start').text = 'Escanear'
             VueScrollTo.scrollTo('#result', 1500)
           } else if (response.data.status==="PROCESSING") {
             this.estimatedTime = response.data.estimated_time
@@ -136,7 +136,7 @@ export default {
           else if (error.response.status == 413) this.errors = "Fichero demasiado pesado para procesarlo. Pruebe con otro más liviano."
           else this.errors = error.response.data.message
           this.inProgress = false;
-          document.getElementById('start').text = 'Iniciar proceso'
+          document.getElementById('start').text = 'Escanear'
 
         });
     },
