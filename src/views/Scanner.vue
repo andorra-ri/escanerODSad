@@ -9,7 +9,7 @@
           </div>
 
           <div class="o-grid__col u-12 u-6@sm">
-            <p><textarea placeholder="Inserta aqui el texto que quieres escanear..." v-model="inputText" rows="9"/></p>
+            <p><textarea placeholder="Pega aquí el texto que quieres escanear..." v-model="inputText" rows="9"/></p>
             <div class="c-input-label c-input-label--file u-block">
               <label for="file">Sube un archivo</label>
               <input type="file" id="file" name="file" v-on:change="loadSelectedFile" placeholder="PDF, doc o txt">
