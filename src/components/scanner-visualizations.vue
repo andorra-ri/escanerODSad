@@ -33,6 +33,8 @@
 
     <div class="u-padding-top-10">
       <h5>Resultados en detalle:</h5>
+      <p v-if="result.topics.length>9">Se muestran solo 10 resultados de {{result.topics.length}}, para ver el resto descárgate el archivo.</p>
+      <p v-if="result.topics.length<9">También puedes guardarte los datos descargándote el archivo.</p>
       <ScannerTable :result="result"></ScannerTable>
     </div>
 
