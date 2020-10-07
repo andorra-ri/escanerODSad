@@ -42,9 +42,9 @@
             <!-- Begin CTAs -->
             <div class="o-grid o-grid--wide o-grid--center u-bg-primary-light u-padding-top-8 u-padding-bottom-8 u-margin-top-8" v-if="result.topics.length">
               <div class="o-grid__col u-12 u-12@xs u-10@sm u-text-center">
-                <h5>Lorem fistrum amatomaa</h5>
-                <p>Sexuarl mamaar no te digo trigo por no llamarte Rodrigor la caidita por la gloria de mi madre ese pedazo de quietooor sexuarl a gramenawer. Amatomaa va usté muy cargadoo sexuarl de la pradera benemeritaar tiene musho peligro quietooor te voy a borrar el cerito jarl. Tiene musho peligro qué dise usteer ese pedazo de sexuarl al ataquerl quietooor al ataquerl. </p>
-                <a @click="saveResult" class="c-button c-button--primary">Guarda el resultado</a>
+                <h5>Guarda el resultado</h5>
+                <p>Puedes volver a acceder a los resultados de tu texto sin necesidad de descargarte el archivo. Al guardar el resultado se te generará una url que puedes conservar y visitar siempre que necesites.</p>
+                <a @click="saveResult" class="c-button c-button--primary">Guardar</a>
               </div>
             </div>
             <!-- End CTAs -->
