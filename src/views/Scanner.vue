@@ -38,7 +38,6 @@
 
             </div>
 
-
             <!-- Begin CTAs -->
             <div class="o-grid o-grid--wide o-grid--center u-bg-primary-light u-padding-top-8 u-padding-bottom-8 u-margin-top-8" v-if="result.topics.length">
               <div class="o-grid__col u-12 u-12@xs u-10@sm u-text-center">
@@ -48,7 +47,6 @@
               </div>
             </div>
             <!-- End CTAs -->
-
 
           </div>
         </div>
