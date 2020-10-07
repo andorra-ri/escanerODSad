@@ -5,7 +5,7 @@
 
         <div class="o-grid u-margin-bottom-4">
           <div class="o-grid__col u-12 u-6@sm">
-            <tipi-message type="info" icon><div v-html="'Abrimos nuestra tecnología al mundo para que puedas escanear y etiquetar en clave de los 17 ODS y sus metas cualquier tipo de texto de la misma manera que Parlamento 2030 lo hace con la actividad parlamentaria española.'"></div></tipi-message>
+            <tipi-message type="info" icon><div v-html="'Scanner 2030 te permite detectar y visualizar la presencia de los diferentes Objetivos de Desarrollo Sostenible (ODS) en cualquier texto.'"></div></tipi-message>
           </div>
 
           <div class="o-grid__col u-12 u-6@sm">
