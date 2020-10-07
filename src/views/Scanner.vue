@@ -26,7 +26,7 @@
         <div id="result" class="o-section o-grid">
           <div v-if="inProgress || errors" class="o-grid__col u-12">
             <tipi-message v-if="errors" type="error" icon>{{errors}}</tipi-message>
-            <tipi-loader v-if="inProgress" title="Escaneando resultados" :subtitle="subtitle" />
+            <tipi-loader v-if="inProgress" title="Escaneando documento" :subtitle="subtitle" />
           </div>
           <div class="o-grid__col u-12 result" v-if="result">
 
