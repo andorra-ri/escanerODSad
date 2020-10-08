@@ -45,8 +45,9 @@
         :csvFields="csvFields"
         :canDownloadCSV="true"
         button-class="c-button--primary"
-        label="Descárgalos en CSV"
-        />
+        label="Descarga tus resultados"
+      />
+      <tipi-message type="info" icon>Los resultados se descargarán en formato csv/excel.</tipi-message>
     </div>
   </div>
 </template>
