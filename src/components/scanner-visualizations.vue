@@ -19,7 +19,7 @@
     </div>
     <div class="u-padding-top-10">
       <h5>Compara los resultados:</h5>
-      <tipi-message type="info" icon>Selecciona un texto de referencia para poder comparar tus resultados con él.</tipi-message>
+      <tipi-message type="info" icon>Selecciona un texto de referencia que ya tenemos cargado en nuestro sistema para poder comparar los resultados de tu texto etiquetado.</tipi-message>
       <div class="c-select-label u-block">
         <label for="topic">Comparar con...</label>
         <multiselect
