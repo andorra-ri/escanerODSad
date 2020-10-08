@@ -13,7 +13,7 @@
         </div>
         <div class="o-grid__col u-12 u-6@sm u-text-center">
           <ScannerWordsCloud :result="result" :maxResults="tagsInWordCloud" :styles="styles"></ScannerWordsCloud>
-          <tipi-message type="info" icon>Se muestran un máximo de {{tagsInWordCloud}} etiquetas</tipi-message>
+          <tipi-message type="info" icon>Se muestran un máximo de {{tagsInWordCloud}} términos</tipi-message>
         </div>
       </div>
     </div>

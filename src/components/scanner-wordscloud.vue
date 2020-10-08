@@ -1,5 +1,5 @@
 <template>
-  <D3WordsCloud :config="config" :datum="datum" :height="400" title="Etiquetas más populares"></D3WordsCloud>
+  <D3WordsCloud :config="config" :datum="datum" :height="400" title="Términos más mencionados"></D3WordsCloud>
 </template>
 
 
