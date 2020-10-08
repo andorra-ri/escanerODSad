@@ -39,21 +39,20 @@
     </div>
 
     <div class="o-grid__col u-12 u-margin-top-4">
-      <tipi-csv-download
-        :initiatives="csvItems || []"
-        :csvItems="csvItems"
-        :csvFields="csvFields"
-        :canDownloadCSV="true"
-        button-class="c-button--primary"
-        label="Descarga tus resultados"
-      />
-      <tipi-message type="info" icon>Los resultados se descargarán en formato csv/excel.</tipi-message>
+      <export-excel
+        :data="csvItems"
+        class="c-button c-button--icon-right c-button--primary"
+      >
+        Descarga tus resultados
+        <span class="c-icon c-icon--type-download"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" fill="none" viewBox="0 0 12 16"><path fill="#2D4252" d="M12 5.647H8.571V0H3.43v5.647H0l6 6.588 6-6.588zm-12 8.47V16h12v-1.882H0z"></path></svg></span>
+      </export-excel>
+      <tipi-message type="info" icon>Los resultados se descargarán en formato excel.</tipi-message>
     </div>
   </div>
 </template>
 
 <script>
-  import { TipiMessage, TipiCsvDownload } from 'tipi-uikit';
+import { TipiMessage, TipiCsvDownload } from 'tipi-uikit';
 import ScannerWordsCloud from '@/components/scanner-wordscloud.vue';
 import ScannerSunburst from '@/components/scanner-sunburst.vue';
 import ScannerBarchart from '@/components/scanner-barchart.vue';
@@ -62,6 +61,10 @@ import ScannerLegend from '@/components/scanner-legend.vue';
 import Multiselect from 'vue-multiselect';
 import preScannedTexts from '@/scanned';
 import config from '@/config';
+import Vue from 'vue'
+import excel from 'vue-excel-export'
+
+Vue.use(excel)
 
 export default {
   name: "ScannerVisualizations",
@@ -87,7 +90,6 @@ export default {
       resultToCompare: null,
       textToCompare: null,
       csvItems: this.result.tags,
-      csvFields: ['topic', 'subtopic', 'tag', 'times'],
       scanned: {},
       tagsInWordCloud: 25,
       styles: config.STYLES,
