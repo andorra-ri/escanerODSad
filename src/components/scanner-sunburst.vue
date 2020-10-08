@@ -1,5 +1,5 @@
 <template>
-  <D3Sunburst class="scanner-sunburst" :config="config" :datum="datum" :height="400" title="Clasificación de resultados"></D3Sunburst>
+  <D3Sunburst class="scanner-sunburst" :config="config" :datum="datum" :height="400" title="Distribución de resultados"></D3Sunburst>
 </template>
 
 
