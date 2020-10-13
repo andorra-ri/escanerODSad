@@ -55,7 +55,7 @@
 </template>
 
 <script>
-  import { TipiMessage, TipiHeader, TipiLoader } from 'tipi-uikit';
+import { TipiMessage, TipiHeader, TipiLoader } from 'tipi-uikit';
 import ScannerVisualizations from '@/components/scanner-visualizations.vue';
 import swal from 'sweetalert2';
 import api from '@/api';
@@ -140,19 +140,32 @@ export default {
     },
     saveResult: function() {
       swal({
-        title: 'Ponle un nombre',
-        input: 'text',
         focusConfirm: true,
         showCancelButton: true,
         confirmButtonText: 'Guardar',
         confirmButtonAriaLabel: 'Guardar',
         cancelButtonText: 'Cancelar',
-        cancelButtonAriaLabel: 'Cancelar'
+        cancelButtonAriaLabel: 'Cancelar',
+        html:
+          '<label for="scan-name"><h4>Ponle un nombre</h4></label>' +
+          '<input id="scan-name" type="text"></input>' +
+          '<label for="scan-expiration"><h4>Se borrará en:</h4></label>' +
+          '<select id="scan-expiration">' +
+            '<option value="1m" selected>Un mes</option>' +
+            '<option value="3m">Tres meses</option>' +
+            '<option value="1y">Un año</option>' +
+          '</select>',
+        preConfirm: () => {
+          const name = swal.getPopup().querySelector('#scan-name').value
+          const expiry = swal.getPopup().querySelector('#scan-expiration').value
+          if (!name || !expiry) {
+            swal.showValidationMessage('Por favor, rellena el formulario')
+          }
+          return { name, expiry }
+        }
       })
-        .then(title => {
-          if (!title.value) throw null;
-
-          api.saveScanned(title.value, this.excerptText, this.result)
+        .then(({ value }) => {
+          api.saveScanned(value.name, this.excerptText, this.result)
             .then(response => {
 
               swal({
