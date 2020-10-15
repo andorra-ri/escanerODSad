@@ -165,7 +165,7 @@ export default {
         }
       })
         .then(({ value }) => {
-          api.saveScanned(value.name, this.excerptText, this.result)
+          api.saveScanned(value.name, value.expiry, this.excerptText, this.result)
             .then(response => {
 
               swal({
