@@ -279,7 +279,8 @@ export default {
         title,
         expiration,
         excerpt,
-        result: JSON.stringify(result)
+        result: JSON.stringify(result),
+        verified: false
       }
     )
 
