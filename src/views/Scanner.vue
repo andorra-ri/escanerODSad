@@ -55,7 +55,7 @@
 </template>
 
 <script>
-  import { TipiMessage, TipiHeader, TipiLoader } from 'tipi-uikit';
+import { TipiMessage, TipiHeader, TipiLoader } from 'tipi-uikit';
 import ScannerVisualizations from '@/components/scanner-visualizations.vue';
 import swal from 'sweetalert2';
 import api from '@/api';
@@ -140,19 +140,32 @@ export default {
     },
     saveResult: function() {
       swal({
-        title: 'Ponle un nombre',
-        input: 'text',
         focusConfirm: true,
         showCancelButton: true,
         confirmButtonText: 'Guardar',
         confirmButtonAriaLabel: 'Guardar',
         cancelButtonText: 'Cancelar',
-        cancelButtonAriaLabel: 'Cancelar'
+        cancelButtonAriaLabel: 'Cancelar',
+        html:
+          '<label for="scan-name"><h4>Ponle un nombre</h4></label>' +
+          '<input id="scan-name" type="text"></input>' +
+          '<label class="scan-expiration-label" for="scan-expiration"><h4>Se borrará en:</h4></label>' +
+          '<select id="scan-expiration">' +
+            '<option value="1m" selected>Un mes</option>' +
+            '<option value="3m">Tres meses</option>' +
+            '<option value="1y">Un año</option>' +
+          '</select>',
+        preConfirm: () => {
+          const name = swal.getPopup().querySelector('#scan-name').value
+          const expiry = swal.getPopup().querySelector('#scan-expiration').value
+          if (!name || !expiry) {
+            swal.showValidationMessage('Por favor, rellena el formulario')
+          }
+          return { name, expiry }
+        }
       })
-        .then(title => {
-          if (!title.value) throw null;
-
-          api.saveScanned(title.value, this.excerptText, this.result)
+        .then(({ value }) => {
+          api.saveScanned(value.name, value.expiry, this.excerptText, this.result)
             .then(response => {
 
               swal({
@@ -212,3 +225,24 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  #scan-expiration {
+    width: 100%;
+    height: 56px;
+    background: white;
+    border: solid 1px #9cb0bf;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='rgb(156,176,191)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 14px;
+    padding: 10px;
+  }
+
+  .scan-expiration-label h4 {
+      margin-top: 15px;
+  }
+</style>

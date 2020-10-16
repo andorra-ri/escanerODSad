@@ -272,12 +272,13 @@ export default {
       ].join('');
     }
   },
-  saveScanned(title, excerpt, result) {
+  saveScanned(title, expiration, excerpt, result) {
     return axios.post(
       getEndpoint(),
       {
-        title: title,
-        excerpt: excerpt,
+        title,
+        expiration,
+        excerpt,
         result: JSON.stringify(result)
       }
     )
