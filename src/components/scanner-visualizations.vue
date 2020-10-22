@@ -24,7 +24,9 @@
         <label for="topic">Comparar con...</label>
         <multiselect
           v-model="textToCompare"
-          :options="preScannedTexts.map(pst => pst.title)"
+          :loading="isLoadingDocuments"
+          :options="compareOptions"
+          @search-change="searchDocuments"
           name="pre-scanned-text" id="pre-scanned-text" placeholder="Selecciona uno">
         </multiselect>
       </div>
@@ -63,6 +65,7 @@ import preScannedTexts from '@/scanned';
 import config from '@/config';
 import Vue from 'vue'
 import excel from 'vue-excel-export'
+import api from '@/api'
 
 Vue.use(excel)
 
@@ -93,7 +96,27 @@ export default {
       scanned: {},
       tagsInWordCloud: 25,
       styles: config.STYLES,
+      isLoadingDocuments: false,
+      documents: [],
+      compareOptions: [],
     };
+  },
+  methods: {
+    searchDocuments(query) {
+      if (query.length <= 1) {
+        return
+      }
+
+      this.isLoadingDocuments = true
+      api.searchScanned(query).then(response => {
+        this.documents = response ? response: []
+        this.compareOptions = []
+        this.documents.forEach(document => {
+          this.compareOptions.push(document.title)
+        })
+        this.isLoadingDocuments = false
+      })
+    }
   },
   watch: {
     textToCompare(val) {

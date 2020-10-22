@@ -31,21 +31,11 @@
     },
     methods: {
       ...mapActions([
-        'getDeputies',
         'getTopics',
-        'getParliamentaryGroups',
-        'getPlaces',
-        'getStatus',
-        'getTypes',
       ]),
     },
     created: function() {
-      this.getDeputies();
       this.getTopics();
-      this.getStatus();
-      this.getPlaces();
-      this.getTypes();
-      this.getParliamentaryGroups();
     }
   }
 </script>
