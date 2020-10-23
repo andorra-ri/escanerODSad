@@ -120,7 +120,7 @@ export default {
   },
   watch: {
     textToCompare(val) {
-      const compareWith = preScannedTexts.filter(d => d.title === val);
+      const compareWith = this.documents.filter(d => d.title === val);
       this.resultToCompare = compareWith.length
         ? compareWith[0]
         : null;
