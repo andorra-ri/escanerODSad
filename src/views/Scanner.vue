@@ -144,6 +144,7 @@ export default {
         showCancelButton: true,
         confirmButtonText: 'Guardar',
         confirmButtonAriaLabel: 'Guardar',
+        confirmButtonColor: '#d64949',
         cancelButtonText: 'Cancelar',
         cancelButtonAriaLabel: 'Cancelar',
         html:
@@ -173,14 +174,17 @@ export default {
                 text: 'Texto escaneado guardado satisfactoriamente',
                 html:
                   '<p>Texto escaneado guardado satisfactoriamente</p>' +
-                  '<input id="url-to-copy" value="' + window.location.origin + '/scanner/' + response.data.id + '" readonly />' +
-                  '<button class="clipboard-button c-button c-button--primary" data-clipboard-target="#url-to-copy">Copiar enlace</button>',
+                  '<input id="url-to-copy" value="' + window.location.origin + '/scanner/' + response.data.id + '" readonly />',
                 focusConfirm: false,
-                confirmButtonText: 'Continuar',
-                confirmButtonAriaLabel: 'Continuar',
+                confirmButtonClass: 'clipboard-button',
+                confirmButtonText: 'Copiar enlace y continuar',
+                confirmButtonAriaLabel: 'Copiar enlace y continuar',
+                confirmButtonColor: '#d64949',
                 type: 'success',
                 onOpen: () => {
-                  const clipboard = new ClipboardJS(".clipboard-button")
+                    const clipboard = new ClipboardJS(".clipboard-button", {
+                        target: (trigger) => document.getElementById('url-to-copy')
+                    })
                 }
               }).then(function (){
                 this.scanned.title = response.data.title
@@ -257,5 +261,6 @@ export default {
   #url-to-copy {
     height: 53px;
     margin-right: 1px;
+    width: 100%;
   }
 </style>
