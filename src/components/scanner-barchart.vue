@@ -16,7 +16,7 @@ export default {
       datum: [],
       config: {
         key: 'key',
-        values: ['Texto original'],
+        values: ['Texto escaneado'],
         orientation: 'horizontal',
         color: { key: 'color' },
         margin: { left: 60 },
@@ -104,15 +104,15 @@ export default {
       // Map values
       this.datum = topics.map(d => ({
         key: d.shortname,
-        'Texto original': d.result,
-        'Texto comparado': d.compared,
+        'Texto escaneado': d.result,
+        'Texto de referencia': d.compared,
         color: this.styles.topics[d.name].color,
       })).sort((a, b) => Utils.naturalSort(a.key, b.key));
 
       // Change chart's configuration
       this.config.values = this.isComparing
-        ? ['Texto original', 'Texto comparado']
-        : ['Texto original'];
+        ? ['Texto escaneado', 'Texto de referencia']
+        : ['Texto escaneado'];
 
     },
   },
