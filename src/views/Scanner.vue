@@ -171,10 +171,17 @@ export default {
               swal({
                 title: 'Guardado!',
                 text: 'Texto escaneado guardado satisfactoriamente',
+                html:
+                  '<p>Texto escaneado guardado satisfactoriamente</p>' +
+                  '<input id="url-to-copy" value="' + window.location.origin + '/scanner/' + response.data.id + '" readonly />' +
+                  '<button class="clipboard-button c-button c-button--primary" data-clipboard-target="#url-to-copy">Copiar enlace</button>',
                 focusConfirm: false,
                 confirmButtonText: 'Continuar',
                 confirmButtonAriaLabel: 'Continuar',
-                type: 'success'
+                type: 'success',
+                onOpen: () => {
+                  const clipboard = new ClipboardJS(".clipboard-button")
+                }
               }).then(function (){
                 this.scanned.title = response.data.title
                 this.scanned.excerpt = response.data.excerpt
@@ -185,6 +192,7 @@ export default {
                   }
                 });
               }.bind(this, response.data));
+
             })
             .catch(
               error => {
@@ -244,5 +252,10 @@ export default {
 
   .scan-expiration-label h4 {
       margin-top: 15px;
+  }
+
+  #url-to-copy {
+    height: 53px;
+    margin-right: 1px;
   }
 </style>
