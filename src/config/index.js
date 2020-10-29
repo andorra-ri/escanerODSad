@@ -5,7 +5,7 @@ export default {
   MENU: [
     {
       route: 'scanner',
-      name: 'Scanner',
+      name: 'Escàner',
       condition: true,
     },
     {
