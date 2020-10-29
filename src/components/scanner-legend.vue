@@ -27,11 +27,19 @@ export default {
       required: true,
       default: () => ({}),
     },
+    isFirst: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     sortedTopics() {
       const topics = [ ...this.result.topics ];
-      return topics.sort(Utils.naturalSort);
+      const sortedTopics = topics.sort(Utils.naturalSort);
+      if (this.isFirst) {
+        return sortedTopics.slice(0, 8)
+      }
+      return sortedTopics.slice(9)
     },
   },
 };
