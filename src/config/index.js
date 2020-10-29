@@ -20,7 +20,7 @@ export default {
   },
   LOGO: '/img/logo.png',
 
-  DEFAULT_PAGE_TITLE: 'Parlamento 2030',
+  DEFAULT_PAGE_TITLE: 'EscànerODS',
   DEFAULT_METATAGS: [
     {
       name: 'description',
