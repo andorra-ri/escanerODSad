@@ -8,7 +8,19 @@
             <p class="u-text-overline">Impulsado por</p>
             <div class="o-grid">
               <div class="o-grid__col u-7@sm">
-                <a href="http://www.exteriores.gob.es/Portal/es/Ministerio/SecretariosDeEstado/SecretariaDeEstadoCooperacionInternacional/Paginas/Inicio.aspx" target="_blank"><img src="/img/maeuec-seci.jpg" class="big" alt="Logo de la Secretaria de Estado de Cooperación (Ministerio de Asuntos Exteriores, Unión Europea y Cooperación) del Gobierno de España"></a>
+                <a href="https://www.observatorisocial.ad/" target="_blank"><img src="/img/logo-observatori-color.jpg" class="big" alt="Logo de l'Observatori Social d'Andorra"></a>
+              </div>
+              <div class="o-grid__col u-5@sm">
+                <a href="https://www.iea.ad/" target="_blank"><img src="/img/logo-IEA-color.jpg" class="big" alt="Logo de l'Institut d'Estudis Andorrans"></a>
+              </div>
+              <div class="o-grid__col u-7@sm">
+                <a href="http://www.consellgeneral.ad/" target="_blank"><img src="/img/logo-consellgeneral-color.jpg" class="big" alt="Logo del Consell General del Principat d'Andorra"></a>
+              </div>
+              <div class="o-grid__col u-5@sm">
+                <a href="https://www.govern.ad/" target="_blank"><img src="/img/logo-governandorra-color.jpg" class="big" alt="Logo del Govern d'Andorra"></a>
+              </div>
+              <div class="o-grid__col u-7@sm">
+                <a href="https://www.actua.ad/" target="_blank"><img src="/img/logo-actua-color.jpg" class="big" alt="Logo de la Iniciativa Actua"></a>
               </div>
               <div class="o-grid__col u-5@sm">
                 <a href="http://politicalwatch.es" target="_blank"><img src="/img/ciecode.png" class="big" alt="Logo de CIECODE"></a>
