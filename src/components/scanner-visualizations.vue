@@ -4,8 +4,11 @@
       <h5>Distribución de los resultados:</h5>
 
       <div class="o-grid">
-        <div class="o-grid__col u-12 u-padding-bottom-4">
-          <ScannerLegend :result="result" :styles="styles"></ScannerLegend>
+        <div class="o-grid__col u-6 u-padding-bottom-4">
+          <ScannerLegend :result="result" :isFirst="true" :styles="styles"></ScannerLegend>
+        </div>
+        <div class="o-grid__col u-6 u-padding-bottom-4">
+          <ScannerLegend :result="result" :isFirst="false" :styles="styles"></ScannerLegend>
         </div>
         <div class="o-grid__col u-12 u-6@sm">
           <ScannerSunburst :result="result" :styles="styles"></ScannerSunburst>
