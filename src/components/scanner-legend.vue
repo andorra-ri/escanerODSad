@@ -37,9 +37,9 @@ export default {
       const topics = [ ...this.result.topics ];
       const sortedTopics = topics.sort(Utils.naturalSort);
       if (this.isFirst) {
-        return sortedTopics.slice(0, 7)
+        return sortedTopics.slice(0, 8)
       }
-      return sortedTopics.slice(8)
+      return sortedTopics.slice(9)
     },
   },
 };
