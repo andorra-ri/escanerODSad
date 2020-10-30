@@ -31,7 +31,7 @@
         </div>
         <div class="o-grid">
           <div class="o-grid__col u-12@sm u-margin-top-4">
-            <p class="u-color-secondary-dark u-text-tbody2">EscànerODS.ad &copy; {{ (new Date()  ).getFullYear() }}</p>
+            <p class="u-color-secondary-dark u-text-tbody2">EscànerODS.ad &copy; {{ (new Date() ).getFullYear() }}</p>
           </div>
         </div>
       </div>

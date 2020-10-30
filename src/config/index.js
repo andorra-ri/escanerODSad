@@ -15,8 +15,7 @@ export default {
     },
   ],
   DISCLAIMER: {
-    route: 'about-en',
-    name: 'Learn more about this project in English',
+    name: 'Aquesta aplicació està en fase BETA.',
   },
   LOGO: '/img/logo.png',
 
@@ -24,11 +23,11 @@ export default {
   DEFAULT_METATAGS: [
     {
       name: 'description',
-      content: 'Parlamento2030 es una innovadora herramienta que rastrea, reúne y ofrece la información sobre la actividad del Congreso de los Diputados español relacionada con los Objetivos de Desarrollo Sostenible. Diseñada para superar los retos que plantea la naturaleza transversal de la Agenda 2030, Parlamento 2030 clasifica la información relacionada con los ODS gracias a un avanzado sistema automático de etiquetado masivo. Esta innovadora tecnología permite a los usuarios navegar por la actividad parlamentaria relacionada con los ODS a través de un buscador online, abierto y gratuito. La información ofrecida es esencial de cara a la monitorización y la rendición de cuentas de la implementación de la Agenda 2030 a nivel nacional.'
+      content: 'EscànerODS'
     },
     {
       name: 'keywords',
-      content: 'transparencia, incidencia política, participación, investigación, periodismo de datos, política, españa, congreso de los diputados, monitorización parlamentaria, ods, sdg, agenda 2030, objetivos de desarrollo sostenible, sustainable development goals'
+      content: ''
     },
     {
       itemprop: 'image',
@@ -40,15 +39,15 @@ export default {
     },
     {
       name: 'twitter:url',
-      content: 'http://parlamento2030.es'
+      content: 'http://escanerods.ad'
     },
     {
       name: 'twitter:title',
-      content: 'Parlamento2030'
+      content: 'EscànerODS'
     },
     {
       name: 'twitter:description',
-      content: 'Parlamento2030 es una innovadora herramienta que rastrea, reúne y ofrece la información sobre la actividad del Congreso de los Diputados español relacionada con los Objetivos de Desarrollo Sostenible.Diseñada para superar los retos que plantea la naturaleza transversal de la Agenda 2030, Parlamento 2030 clasifica la información relacionada con los ODS gracias a un avanzado sistema automático de etiquetado masivo.Esta innovadora tecnología permite a los usuarios navegar por la actividad parlamentaria relacionada con los ODS a través de un buscador online, abierto y gratuito.La información ofrecida es esencial de cara a la monitorización y la rendición de cuentas de la implementación de la Agenda 2030 a nivel nacional.'
+      content: 'EscànerODS'
     },
     {
       name: 'twitter:creator',
@@ -60,7 +59,7 @@ export default {
     },
     {
       property: 'og:title',
-      content: 'Parlamento2030'
+      content: 'EscànerODS'
     },
     {
       property: 'og:type',
@@ -68,7 +67,7 @@ export default {
     },
     {
       property: 'og:url',
-      content: 'http://www.parlamento2030.es'
+      content: 'http://www.escanerods.ad'
     },
     {
       property: 'og:image',
@@ -76,11 +75,11 @@ export default {
     },
     {
       property: 'og:description',
-      content: 'Parlamento2030 es una innovadora herramienta que rastrea, reúne y ofrece la información sobre la actividad del Congreso de los Diputados español relacionada con los Objetivos de Desarrollo Sostenible. Diseñada para superar los retos que plantea la naturaleza transversal de la Agenda 2030, Parlamento 2030 clasifica la información relacionada con los ODS gracias a un avanzado sistema automático de etiquetado masivo. Esta innovadora tecnología permite a los usuarios navegar por la actividad parlamentaria relacionada con los ODS a través de un buscador online, abierto y gratuito. La información ofrecida es esencial de cara a la monitorización y la rendición de cuentas de la implementación de la Agenda 2030 a nivel nacional.'
+      content: 'EscànerODS'
     },
     {
       property: 'og:site_name',
-      content: 'Parlamentp2030'
+      content: 'EscànerODS'
     },
   ],
   STYLES: {
