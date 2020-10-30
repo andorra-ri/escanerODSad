@@ -4,7 +4,6 @@ import sha1 from 'js-sha1';
 import Scanner from '@/views/Scanner.vue'
 import Scanned from '@/views/Scanned.vue'
 import About from '@/views/About.vue'
-import AboutEnglish from '@/views/AboutEnglish.vue'
 import Page404 from '@/views/Page404.vue'
 import config from '@/config';
 // eslint-disable-next-line no-unused-vars
