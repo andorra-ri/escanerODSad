@@ -99,12 +99,12 @@ export default {
         color: "#4c9f38",
         image: "ods-3.svg",
       },
-      "ODS 4 Educación de calidad": {
+      "ODS 4 Educació de qualitat": {
         shortname: "ODS 4",
         color: "#c52333",
         image: "ods-4.svg",
       },
-      "ODS 5 Igualdad de género": {
+      "ODS 5 Igualtat de génere": {
         shortname: "ODS 5",
         color: "#ed4135",
         image: "ods-5.svg",
@@ -129,7 +129,7 @@ export default {
         color: "#f06a38",
         image: "ods-9.svg",
       },
-      "ODS 10 Reducción de las desigualdades": {
+      "ODS 10 Reducció de les desigualtats": {
         shortname: "ODS 10",
         color: "#dd1367",
         image: "ods-10.svg",
@@ -144,7 +144,7 @@ export default {
         color: "#cf8d2a",
         image: "ods-12.svg",
       },
-      "ODS 13 Acción por el clima": {
+      "ODS 13 Acció climàtica": {
         shortname: "ODS 13",
         color: "#48773e",
         image: "ods-13.svg",
