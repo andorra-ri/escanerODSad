@@ -5,20 +5,20 @@
 
         <div class="o-grid u-margin-bottom-4">
           <div class="o-grid__col u-12 u-6@sm">
-            <tipi-message type="info" icon><div v-html="'EscànerODS te permite detectar y visualizar la presencia de los diferentes Objetivos de Desarrollo Sostenible (ODS) en cualquier texto.'"></div></tipi-message>
+            <tipi-message type="info" icon><div v-html="'L\'EscànerODS et permet detectar i visualitzar la presència dels diferents Objectius de Desenvolupament sostenible (ODS) en qualsevol text.'"></div></tipi-message>
           </div>
 
           <div class="o-grid__col u-12 u-6@sm">
-            <p><textarea placeholder="Pega aquí el texto que quieres escanear..." v-model="inputText" rows="9"/></p>
+            <p><textarea placeholder="Enganxa aquí el text que vulguis escanejar..." v-model="inputText" rows="9"/></p>
             <div class="c-input-label c-input-label--file u-block">
-              <label for="file">Sube un archivo</label>
+              <label for="file">Puja un arxiu</label>
               <input type="file" id="file" name="file" v-on:change="loadSelectedFile" placeholder="PDF, doc o txt">
-              <small class="u-color-secondary">El tamaño máximo soportado de los archivos es de 20 Mb.</small><br>
+              <small class="u-color-secondary">La mida màxima dels fitxers suportats és de 20 MB.</small><br>
               <small class="u-color-secondary">pdf, txt, doc, docx, odt, xls, xlsx, ppt, pptx, jpg, png, gif, html</small>
             </div>
             <p>
-            <a id="start" class="c-button c-button--primary" @click.prevent="annotate">Escanear</a>
-            <a class="c-button" :class="{ disabled: inProgress }" v-if="hasInput" @click="cleanTextAndResult">Limpiar</a>
+            <a id="start" class="c-button c-button--primary" @click.prevent="annotate">Escanejar</a>
+            <a class="c-button" :class="{ disabled: inProgress }" v-if="hasInput" @click="cleanTextAndResult">Netejar</a>
             </p>
           </div>
         </div>
@@ -26,11 +26,11 @@
         <div id="result" class="o-section o-grid">
           <div v-if="inProgress || errors" class="o-grid__col u-12">
             <tipi-message v-if="errors" type="error" icon>{{errors}}</tipi-message>
-            <tipi-loader v-if="inProgress" title="Escaneando documento" :subtitle="subtitle" />
+            <tipi-loader v-if="inProgress" title="Escanejant document" :subtitle="subtitle" />
           </div>
           <div class="o-grid__col u-12 result" v-if="result">
 
-            <tipi-message v-if="!result.topics.length" type="error" icon>No hemos encontrado ninguna coincidencia entre tu texto y nuestras etiquetas.</tipi-message>
+            <tipi-message v-if="!result.topics.length" type="error" icon>No hem trobat cap coincidència entre el teu text i les nostres etiquetes.</tipi-message>
 
             <div v-else>
 
@@ -41,8 +41,8 @@
             <!-- Begin CTAs -->
             <div class="o-grid o-grid--wide o-grid--center u-bg-primary-light u-padding-top-8 u-padding-bottom-8 u-margin-top-8" v-if="result.topics.length">
               <div class="o-grid__col u-12 u-12@xs u-10@sm u-text-center">
-                <h5>Guarda el resultado</h5>
-                <p>Puedes volver a acceder a los resultados de tu texto sin necesidad de descargarte el archivo. Al guardar el resultado se te generará una url que puedes conservar y visitar siempre que necesites.</p>
+                <h5>Desa el resultat</h5>
+                <p>Pots tornar a accedir als resultats del teu text escanejat sense necessitat de descarregar-te l'arxiu. En desar el resultat, se't generarà un enllaç que pots conservar i visitar sempre que el necessitis.</p>
                 <a @click="saveResult" class="c-button c-button--primary">Guardar</a>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default {
   },
   computed: {
     subtitle () {
-      return this.estimatedTime ? `Tardaremos unos ${this.estimatedTime} segundos en mostrarte resultados. No te vayas` : "Ten paciencia, estamos trabajando duro"
+      return this.estimatedTime ? `Trigarem aproximadament ${this.estimatedTime} segons en presentar-te els resultats. No marxis...` : "Tingues paciència. Estem treballant de valent."
     },
     hasInput () {
       return this.inputText!='' || this.inputFile!=null

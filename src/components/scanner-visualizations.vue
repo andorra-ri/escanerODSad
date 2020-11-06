@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h5>Distribución de los resultados:</h5>
+      <h5>Distribució dels resultats:</h5>
 
       <div class="o-grid">
         <div class="o-grid__col u-6 u-padding-bottom-4">
@@ -12,19 +12,19 @@
         </div>
         <div class="o-grid__col u-12 u-6@sm">
           <ScannerSunburst :result="result" :styles="styles"></ScannerSunburst>
-          <tipi-message type="info" icon>Puedes hacer zoom haciendo click en cada una de las porciones.</tipi-message>
+          <tipi-message type="info" icon>Pots fer zoom fent clic a cadascuna de les porcions.</tipi-message>
         </div>
         <div class="o-grid__col u-12 u-6@sm u-text-center">
           <ScannerWordsCloud :result="result" :maxResults="tagsInWordCloud" :styles="styles"></ScannerWordsCloud>
-          <tipi-message type="info" icon>Se muestran un máximo de {{tagsInWordCloud}} términos</tipi-message>
+          <tipi-message type="info" icon>Es mostra un màxim de {{tagsInWordCloud}} termes</tipi-message>
         </div>
       </div>
     </div>
     <div class="u-padding-top-10">
-      <h5>Compara los resultados:</h5>
-      <tipi-message type="info" icon>Selecciona un documento de referencia que ya tenemos cargado en nuestro sistema para poder comparar los resultados de tu documento escaneado.</tipi-message>
+      <h5>Compara els resultats:</h5>
+      <tipi-message type="info" icon>Selecciona un text de referència que ja tenim carregat en el nostre sistema per a poder comparar els resultats del teu text etiquetat.</tipi-message>
       <div class="c-select-label u-block">
-        <label for="topic">Comparar con...</label>
+        <label for="topic">Comparar amb...</label>
         <multiselect
           v-model="textToCompare"
           :loading="isLoadingDocuments"
@@ -37,7 +37,7 @@
     </div>
 
     <div class="u-padding-top-10">
-      <h5>Resultados en detalle:</h5>
+      <h5>Resultats destallats:</h5>
       <p v-if="result.topics.length>9">Se muestran solo 10 resultados de {{result.topics.length}}, para ver el resto descárgate el archivo.</p>
       <p v-if="result.topics.length<9">También puedes guardarte los datos descargándote el archivo.</p>
       <ScannerTable :result="result"></ScannerTable>
@@ -48,10 +48,10 @@
         :data="csvItems"
         class="c-button c-button--icon-right c-button--primary"
       >
-        Descarga tus resultados
+        Descàrrega els teus resultats
         <span class="c-icon c-icon--type-download"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" fill="none" viewBox="0 0 12 16"><path fill="#2D4252" d="M12 5.647H8.571V0H3.43v5.647H0l6 6.588 6-6.588zm-12 8.47V16h12v-1.882H0z"></path></svg></span>
       </export-excel>
-      <tipi-message type="info" icon>Los resultados se descargarán en formato excel.</tipi-message>
+      <tipi-message type="info" icon>Els resultats es descarregaran en format Excel.</tipi-message>
     </div>
   </div>
 </template>
