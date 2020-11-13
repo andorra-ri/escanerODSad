@@ -30,16 +30,16 @@
           :loading="isLoadingDocuments"
           :options="compareOptions"
           @search-change="searchDocuments"
-          name="pre-scanned-text" id="pre-scanned-text" placeholder="Selecciona uno">
+          name="pre-scanned-text" id="pre-scanned-text" placeholder="Selecciona un">
         </multiselect>
       </div>
       <ScannerBarchart :result="this.result" :resultToCompare="resultToCompare" :styles="styles"></ScannerBarchart>
     </div>
 
     <div class="u-padding-top-10">
-      <h5>Resultats destallats:</h5>
-      <p v-if="result.topics.length>9">Se muestran solo 10 resultados de {{result.topics.length}}, para ver el resto descárgate el archivo.</p>
-      <p v-if="result.topics.length<9">También puedes guardarte los datos descargándote el archivo.</p>
+      <h5>Resultats detallats:</h5>
+      <p v-if="result.topics.length>9">Es mostren només 10 resultats de {{result.topics.length}}, per veure la resta descarregueu l'arxiu.</p>
+      <p v-if="result.topics.length<9">També podeu obtenir les dades descarregant-vos l'arxiu.</p>
       <ScannerTable :result="result"></ScannerTable>
     </div>
 

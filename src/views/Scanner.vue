@@ -43,7 +43,7 @@
               <div class="o-grid__col u-12 u-12@xs u-10@sm u-text-center">
                 <h5>Desa el resultat</h5>
                 <p>Pots tornar a accedir als resultats del teu text escanejat sense necessitat de descarregar-te l'arxiu. En desar el resultat, se't generarà un enllaç que pots conservar i visitar sempre que el necessitis.</p>
-                <a @click="saveResult" class="c-button c-button--primary">Guardar</a>
+                <a @click="saveResult" class="c-button c-button--primary">Desar</a>
               </div>
             </div>
             <!-- End CTAs -->
@@ -113,14 +113,14 @@ export default {
     annotate() {
       this.cleanResult();
       this.inProgress = true;
-      document.getElementById('start').text = 'Procesando...'
+      document.getElementById('start').text = 'En procés...'
       api.annotate(this.inputText, this.inputFile)
         .then(response => {
           if (response.data.status==="SUCCESS") {
             this.result = response.data.result
             this.excerptText = response.data.excerpt
             this.inProgress = false;
-            document.getElementById('start').text = 'Escanear'
+            document.getElementById('start').text = 'Escanejar'
             VueScrollTo.scrollTo('#result', 1500)
           } else if (response.data.status==="PROCESSING") {
             this.estimatedTime = response.data.estimated_time
@@ -130,11 +130,11 @@ export default {
           }
         })
         .catch(error => {
-          if (error.response.status == 429) this.errors = "Has sobrepasado el límite de escaneos por hora. Vuelve a intentarlo pasado un tiempo."
-          else if (error.response.status == 413) this.errors = "Fichero demasiado pesado para procesarlo. Pruebe con otro más liviano."
+          if (error.response.status == 429) this.errors = "Has sobrepassat el límit d'escanejos per hora. Torna a intentar-ho d'aquí una estona."
+          else if (error.response.status == 413) this.errors = "Fitxer massa pesat per processar-lo. Proveu amb un altre més lleuger."
           else this.errors = error.response.data.message
           this.inProgress = false;
-          document.getElementById('start').text = 'Escanear'
+          document.getElementById('start').text = 'Escanejar'
 
         });
     },
@@ -142,25 +142,25 @@ export default {
       swal({
         focusConfirm: true,
         showCancelButton: true,
-        confirmButtonText: 'Guardar',
-        confirmButtonAriaLabel: 'Guardar',
+        confirmButtonText: 'Desar',
+        confirmButtonAriaLabel: 'Desar',
         confirmButtonColor: '#d64949',
-        cancelButtonText: 'Cancelar',
-        cancelButtonAriaLabel: 'Cancelar',
+        cancelButtonText: 'Cancel·lar',
+        cancelButtonAriaLabel: 'Cancel·lar',
         html:
-          '<label for="scan-name"><h4>Ponle un nombre</h4></label>' +
+          '<label for="scan-name"><h4>Anomena\'l</h4></label>' +
           '<input id="scan-name" type="text"></input>' +
-          '<label class="scan-expiration-label" for="scan-expiration"><h4>Se borrará en:</h4></label>' +
+          '<label class="scan-expiration-label" for="scan-expiration"><h4>S\'esborrarà en:</h4></label>' +
           '<select id="scan-expiration">' +
             '<option value="1m" selected>Un mes</option>' +
-            '<option value="3m">Tres meses</option>' +
-            '<option value="1y">Un año</option>' +
+            '<option value="3m">Tres mesos</option>' +
+            '<option value="1y">Un any</option>' +
           '</select>',
         preConfirm: () => {
           const name = swal.getPopup().querySelector('#scan-name').value
           const expiry = swal.getPopup().querySelector('#scan-expiration').value
           if (!name || !expiry) {
-            swal.showValidationMessage('Por favor, rellena el formulario')
+            swal.showValidationMessage('Si us plau, ompl el formulari')
           }
           return { name, expiry }
         }
@@ -170,15 +170,15 @@ export default {
             .then(response => {
 
               swal({
-                title: 'Guardado!',
-                text: 'Texto escaneado guardado satisfactoriamente',
+                title: 'Desat!',
+                text: 'Text escanejat desat satisfactòriament',
                 html:
-                  '<p>Texto escaneado guardado satisfactoriamente</p>' +
+                  '<p>Text escanejat desat satisfactòriament</p>' +
                   '<input id="url-to-copy" value="' + window.location.origin + '/scanner/' + response.data.id + '" readonly />',
                 focusConfirm: false,
                 confirmButtonClass: 'clipboard-button',
-                confirmButtonText: 'Copiar enlace y continuar',
-                confirmButtonAriaLabel: 'Copiar enlace y continuar',
+                confirmButtonText: 'Còpia enllaç i continuar',
+                confirmButtonAriaLabel: 'Còpia enllaç i continuar',
                 confirmButtonColor: '#d64949',
                 type: 'success',
                 onOpen: () => {
@@ -202,8 +202,8 @@ export default {
               error => {
                 const limited = error.response.status === 429;
                 swal({
-                  title: limited ? 'Limite excedido por hora' : 'Error al guardar el texto escaneado',
-                  text: 'Inténtalo de nuevo más tarde',
+                  title: limited ? 'Límit per hora excedit ' : 'Error en desar el text escanejat',
+                  text: 'Intenta-ho de nou més tard',
                   focusConfirm: false,
                   type: 'error'
                 });
@@ -221,7 +221,7 @@ export default {
           this.result = response.data.result
           this.excerptText = response.data.excerpt
           this.inProgress = false;
-          document.getElementById('start').text = 'Iniciar proceso'
+          document.getElementById('start').text = 'Iniciar procés'
           VueScrollTo.scrollTo('#result', 1500)
         } else if (response.data.status==="PENDING") {
           setTimeout(() => {

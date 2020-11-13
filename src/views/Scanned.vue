@@ -7,7 +7,7 @@
           <div class="o-grid__col u-12 result">
 
             <div class="u-padding-bottom-10">
-              <h5>Extracto del texto:</h5>
+              <h5>Extracte del text:</h5>
               <div class="o-grid__col u-12 u-8@sm u-12@xs">
                 <p class="u-color-secondary">{{ excerpt }}</p>
               </div>
@@ -20,8 +20,8 @@
           <!-- Begin CTAs -->
           <div class="o-grid o-grid--wide o-grid--center u-bg-primary-light u-padding-top-8 u-padding-bottom-8 u-margin-top-8">
             <div class="o-grid__col u-12 u-12@xs u-10@sm u-text-center">
-              <h5>Lorem fistrum amatomaa</h5>
-              <p>Sexuarl mamaar no te digo trigo por no llamarte Rodrigor la caidita por la gloria de mi madre ese pedazo de quietooor sexuarl a gramenawer. Amatomaa va usté muy cargadoo sexuarl de la pradera benemeritaar tiene musho peligro quietooor te voy a borrar el cerito jarl. Tiene musho peligro qué dise usteer ese pedazo de sexuarl al ataquerl quietooor al ataquerl. </p>
+              <h5>Escaneja un altre document</h5>
+              <p></p>
               <router-link :to="{name:'scanner'}" class="c-button c-button--primary">Escanejar un altre document</router-link>
             </div>
           </div>

@@ -5,7 +5,7 @@
       <div class="o-container">
         <div class="o-grid">
           <div class="o-grid__col u-7@sm u-margin-top-4">
-            <p class="u-text-overline">Impulsado por</p>
+            <p class="u-text-overline">Impulsat per</p>
             <div class="o-grid">
               <div class="o-grid__col u-4@sm">
                 <a href="http://www.consellgeneral.ad/" target="_blank"><img src="/img/logo-consellgeneral-color.jpg" class="big" alt="Logo del Consell General del Principat d'Andorra"></a>
@@ -25,8 +25,8 @@
             </div>
           </div>
           <div class="o-grid__col u-4@sm u-offset-1@sm u-margin-top-4">
-            <p class="u-text-overline">Desarrollado por</p>
-            <a href="http://politicalwatch.es" target="_blank"><img src="/img/logo-politicalwatch.png" class="big" alt="Logo de CIECODE" width="75%"></a>
+            <p class="u-text-overline">Desenvolupat per</p>
+            <a href="http://politicalwatch.es" target="_blank"><img src="/img/logo-politicalwatch.png" class="big" alt="Logo de Political Watch" width="75%"></a>
           </div>
         </div>
         <div class="o-grid">
@@ -40,7 +40,7 @@
 
     <div class="c-decorator" style="background-image: url('/img/multicolor.jpg')"></div>
 
-    <cookie-law theme="base" buttonText="Entendido" buttonClass="c-button c-button--primary" message="Este sitio usa cookies para asegurarte la mejor experiencia web."></cookie-law>
+    <cookie-law theme="base" buttonText="Entès" buttonClass="c-button c-button--primary" message="Aquesta pàgina utilitza cookies per assegurar-vos una millor experiència web."></cookie-law>
 
   </div>
 </template>

@@ -10,7 +10,7 @@ export default {
     },
     {
       route: 'about',
-      name: 'Acerca',
+      name: 'Fita',
       condition: true,
     },
   ],
