@@ -1,5 +1,5 @@
 <template>
-  <D3BarChart :config="config" :datum="datum" :height="height"></D3BarChart>
+  <D3BarChart :config="config" :datum="datum" :height="height" :download="downloadLabel"></D3BarChart>
 </template>
 
 
@@ -20,11 +20,12 @@ export default {
         orientation: 'horizontal',
         color: { key: 'color' },
         margin: { left: 60 },
-        tooltip: { suffix: 'aparición', suffixPlural: 'apariciones' },
+        tooltip: { suffix: 'aparició', suffixPlural: 'aparicions' },
       },
       height: 500,
       barHeight: 40,
       maxHeight: 900,
+      downloadLabel: 'Descarregar',
     };
   },
   props: {

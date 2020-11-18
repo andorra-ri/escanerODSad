@@ -104,7 +104,7 @@ export default {
         color: "#c52333",
         image: "ods-4.svg",
       },
-      "ODS 5 Igualtat de génere": {
+      "ODS 5 Igualtat de gènere": {
         shortname: "ODS 5",
         color: "#ed4135",
         image: "ods-5.svg",

@@ -1,5 +1,5 @@
 <template>
-  <D3Sunburst class="scanner-sunburst" :config="config" :datum="datum" :height="400" title="Distribución de resultados"></D3Sunburst>
+  <D3Sunburst class="scanner-sunburst" :config="config" :datum="datum" :height="400" title="Distribució de resultats" :download="downloadLabel"></D3Sunburst>
 </template>
 
 
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       datum: [{
-        name:'Resultados',
+        name:'Resultats',
         children: [],
         color: '#EEE',
       }],
@@ -26,9 +26,10 @@ export default {
         color: {
           key: 'color',
         },
-        tooltip: { suffix: 'aparición', suffixPlural: 'apariciones' },
+        tooltip: { suffix: 'aparició', suffixPlural: 'aparicions' },
         transition: { duration: 1000 },
       },
+      downloadLabel: 'Descarregar',
     };
   },
   props: {

@@ -4,9 +4,9 @@
       <thead>
         <tr>
           <th>ODS</th>
-          <th>Meta</th>
+          <th>Fita</th>
           <th>Etiqueta</th>
-          <th>Apariciones</th>
+          <th>Aparicions</th>
         </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@
     <tipi-message
       v-if="totalRows > limitRows"
       type="info"
-      icon>Estamos mostrando {{limitRows}} de un total de {{totalRows}} resultados encontrados.</tipi-message>
+      icon>Estem mostrant {{limitRows}} d'un total de {{totalRows}} resultats trobats.</tipi-message>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
   },
   created() {
     this.parseResults();
-  },  
+  },
   props: {
     result: {
       type: Object || null,

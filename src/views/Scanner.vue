@@ -5,7 +5,7 @@
 
         <div class="o-grid u-margin-bottom-4">
           <div class="o-grid__col u-12 u-6@sm">
-            <tipi-message type="info" icon><div v-html="'L\'EscànerODS et permet detectar i visualitzar la presència dels diferents Objectius de Desenvolupament sostenible (ODS) en qualsevol text.'"></div></tipi-message>
+            <tipi-message type="info" icon><div v-html="'L\'EscànerODS et permet detectar i visualitzar la presència dels diferents Objectius de Desenvolupament Sostenible (ODS) en qualsevol text.'"></div></tipi-message>
           </div>
 
           <div class="o-grid__col u-12 u-6@sm">

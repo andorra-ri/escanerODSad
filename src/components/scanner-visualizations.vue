@@ -22,7 +22,7 @@
     </div>
     <div class="u-padding-top-10">
       <h5>Compara els resultats:</h5>
-      <tipi-message type="info" icon>Selecciona un text de referència que ja tenim carregat en el nostre sistema per a poder comparar els resultats del teu text etiquetat.</tipi-message>
+      <tipi-message type="info" icon>Selecciona un text de referència, entre els que tenim carregats en el nostre sistema, per a poder comparar amb els resultats del teu text etiquetat.</tipi-message>
       <div class="c-select-label u-block">
         <label for="topic">Comparar amb...</label>
         <multiselect
