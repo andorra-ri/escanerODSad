@@ -21,7 +21,7 @@ export default {
         color: { key: 'color' },
         margin: { left: 60 },
         tooltip: { suffix: 'aparició', suffixPlural: 'aparicions' },
-        keys: { "Texto escaneado": "Text escanejat", "Texto de refernecia": "text de referència"}
+        keys: { "Texto escaneado": "Text escanejat", "Texto de referencia": "text de referència"}
       },
       height: 500,
       barHeight: 40,
