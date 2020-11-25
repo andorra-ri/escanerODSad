@@ -56,7 +56,7 @@ export default {
 
       // Parent element
       const sunburstitems = {
-        name: 'Resultados',
+        name: 'Resultats',
         children: [],
         color: '#EEE',
       }
